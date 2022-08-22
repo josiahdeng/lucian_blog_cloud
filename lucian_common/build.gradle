@@ -1,0 +1,11 @@
+archivesBaseName = "lucian_common"
+
+// 取消打包为 bootJar 可独立运行包，因为 common 只是一个普通的jar包
+// 如果是需要独立运行的jar包，这个就改为true
+bootJar.enabled = false
+
+dependencies {
+
+    // 这里引入依赖，不需要定义版本号，已经在父项目定义了
+    implementation 'org.projectlombok:lombok'
+}

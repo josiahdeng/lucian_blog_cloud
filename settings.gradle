@@ -1,0 +1,5 @@
+rootProject.name = 'lucian_blog_cloud'
+include 'lucian_common'
+include 'lucian_post'
+include 'lucian_eureka'
+
