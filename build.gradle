@@ -8,13 +8,14 @@ ext {
     set('springCloudVersion', "2021.0.3")
     mysqlVersion = '8.0.30'
     lombokVersion = '1.18.24'
+    mybatisPlusVersion = '3.5.2'
 }
-
 
 
 repositories {
     mavenCentral()
 }
+
 
 subprojects {
     apply plugin: 'java'
@@ -32,6 +33,17 @@ subprojects {
         mavenCentral()
     }
 
+    if (it.parent.name == 'backend') {
+        dependencies {
+            allprojects {
+                implementation project(":lucian_common")
+                implementation 'org.springframework.boot:spring-boot-starter-web'
+                implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+                implementation "mysql:mysql-connector-java:${mysqlVersion}"
+            }
+        }
+    }
+
     dependencyManagement {
 
         // 导入SpringBoot和SpringCloud依赖Bom
@@ -44,6 +56,17 @@ subprojects {
         dependencies {
             dependency "mysql:mysql-connector-java:${mysqlVersion}"
             dependency "lombok:org.projectlombok:${lombokVersion}"
+            // https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
         }
+    }
+}
+
+project(":lucian_ribbon") {
+    dependencies {
+        implementation project(':lucian_common')
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.2.10.RELEASE'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     }
 }

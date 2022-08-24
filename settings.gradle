@@ -1,5 +1,7 @@
 rootProject.name = 'lucian_blog_cloud'
 include 'lucian_common'
-include 'lucian_post'
 include 'lucian_eureka'
+include ':lucian_modules:backend:post'
+project(':lucian_modules:backend:post').projectDir = file('lucian_modules/backend/post')
+include 'lucian_ribbon'
 

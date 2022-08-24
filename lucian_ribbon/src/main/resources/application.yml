@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: lucian_ribbon
+server:
+  port: 9999
+#更改主机实例ID名
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    #鼠标悬停时显示主机ip地址
+    prefer-ip-address: true
+  #表示是否将自己注册进Eureka，默认为true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8081/eureka/
