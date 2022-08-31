@@ -3,5 +3,11 @@ include 'lucian_common'
 include 'lucian_eureka'
 include ':lucian_modules:backend:post'
 project(':lucian_modules:backend:post').projectDir = file('lucian_modules/backend/post')
-include 'lucian_ribbon'
+include 'lucian_feign'
+include 'lucian_common:common'
+findProject(':lucian_common:common')?.name = 'common'
+include 'lucian_common:front'
+findProject(':lucian_common:front')?.name = 'front'
+include 'lucian_common:backend'
+findProject(':lucian_common:backend')?.name = 'backend'
 

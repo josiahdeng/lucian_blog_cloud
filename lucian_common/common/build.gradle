@@ -1,0 +1,5 @@
+dependencies {
+    // 这里引入依赖，不需要定义版本号，已经在父项目定义了
+    api 'org.projectlombok:lombok'
+    api 'com.baomidou:mybatis-plus-boot-starter'
+}

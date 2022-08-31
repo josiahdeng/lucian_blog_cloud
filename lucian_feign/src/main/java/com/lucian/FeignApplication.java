@@ -3,6 +3,7 @@ package com.lucian;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @author denglingxiang
@@ -10,8 +11,9 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  **/
 @EnableEurekaClient
 @SpringBootApplication
-public class RibbonApplication {
+@EnableFeignClients
+public class FeignApplication {
     public static void main(String[] args) {
-        SpringApplication.run(RibbonApplication.class, args);
+        SpringApplication.run(FeignApplication.class, args);
     }
 }

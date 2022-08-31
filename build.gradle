@@ -1,5 +1,5 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
 }
@@ -9,6 +9,7 @@ ext {
     mysqlVersion = '8.0.30'
     lombokVersion = '1.18.24'
     mybatisPlusVersion = '3.5.2'
+    hibernateValidationVersion = '8.0.0.CR3'
 }
 
 
@@ -18,7 +19,7 @@ repositories {
 
 
 subprojects {
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
@@ -31,17 +32,6 @@ subprojects {
     // 指定仓库地址
     repositories {
         mavenCentral()
-    }
-
-    if (it.parent.name == 'backend') {
-        dependencies {
-            allprojects {
-                implementation project(":lucian_common")
-                implementation 'org.springframework.boot:spring-boot-starter-web'
-                implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
-                implementation "mysql:mysql-connector-java:${mysqlVersion}"
-            }
-        }
     }
 
     dependencyManagement {
@@ -58,15 +48,7 @@ subprojects {
             dependency "lombok:org.projectlombok:${lombokVersion}"
             // https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter
             dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+            dependency "org.hibernate.validator:hibernate-validator:${hibernateValidationVersion}"
         }
-    }
-}
-
-project(":lucian_ribbon") {
-    dependencies {
-        implementation project(':lucian_common')
-        implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-ribbon:2.2.10.RELEASE'
-        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     }
 }

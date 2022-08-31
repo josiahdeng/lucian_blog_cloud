@@ -1,6 +1,6 @@
 spring:
   application:
-    name: lucian_ribbon
+    name: lucian-ribbon
 server:
   port: 9999
 #更改主机实例ID名
@@ -15,3 +15,8 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8081/eureka/
+rest:
+  template:
+    config: # RestTemplate调用超时配置
+      connectTimeout: 5000
+      readTimeout: 5000

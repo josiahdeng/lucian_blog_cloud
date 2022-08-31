@@ -1,0 +1,8 @@
+dependencies {
+    implementation(project(':lucian_common:backend')) {
+        exclude group: 'com.baomidou', module: 'mybatis-plus-boot-starter'
+    }
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+}

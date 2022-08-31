@@ -1,1 +1,14 @@
 jar.enabled = false
+
+subprojects {
+    if (it.name != 'backend') {
+        dependencies {
+            implementation project(":lucian_common:backend")
+            implementation 'org.springframework.boot:spring-boot-starter-web'
+            implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+            implementation "mysql:mysql-connector-java"
+            implementation 'org.hibernate.validator:hibernate-validator'
+            // https://mvnrepository.com/artifact/org.springframework/spring-context-support
+        }
+    }
+}
